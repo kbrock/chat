@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+		<title>Sample of websocket with golang</title>
+		<meta charset="UTF-8" />
+    <script src="lib/jquery-1.8.3.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"> 
+		<script src="lib/angular/angular.js"></script>
+    <script src="js/app.js"></script>
+ 
+    <style>
+      body { margin-top: 10px; }
+      input.message { height: 30px; }
+    </style>
+  </head>
+  <body ng-controller="AppCtrl">
+    <form class="form-inline" ng-submit="send()">
+      <button ng-click="connect()" class="btn">Connect</button>
+      <input type="text" ng-model="body" placeholder="input message to send" class="message"></input>
+      <button ng-click="send()" class="btn">send</button>
+    </form>
+ 
+    <table class="table table-striped">
+      <tr ng-repeat="message in messages">
+        <td>{{message.author}}</td><td>{{message.body}}</td>
+      </tr
+    </table>
+  </body>
+</html>
