@@ -16,7 +16,13 @@ The client is based upon http://parroty00.wordpress.com/2013/07/15/eventmachine-
 ## Installation 
 
 ```bash
-go install github.com/kbrock/chat/chat
+export GOPATH=$(pwd)
+
+# while developing:
+# mkdir -p src/github.com/kbrock
+# ln -s ../../.. src/github.com/kbrock/chat
+go get github.com/kbrock/chat
+go install github.com/kbrock/chat
 ```
 
 `open http://localhost:8080/`
