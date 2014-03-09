@@ -16,12 +16,15 @@
     </style>
   </head>
   <body ng-controller="AppCtrl">
-    <form class="form-inline" ng-submit="send()">
-      <button ng-click="connect()" class="btn">Connect</button>
-      <input type="text" ng-model="body" placeholder="input message to send" class="message"></input>
-      <button ng-click="send()" class="btn">send</button>
-    </form>
- 
+    <div>
+      <form class="form-inline" ng-submit="connect()" ng-if="!isConnected">
+        <button class="btn">Connect</button>
+      </form>
+      <form class="form-inline" ng-submit="send()" ng-if="isConnected">
+        <input type="text" ng-model="body" placeholder="input message to send" class="message"></input>
+        <submit ng-click="send()" class="btn">send</button>
+      </form>
+    </div>
     <table class="table table-striped">
       <tr ng-repeat="message in messages">
         <td>{{message.author}}</td><td>{{message.body}}</td>

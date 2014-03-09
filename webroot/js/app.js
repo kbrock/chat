@@ -13,7 +13,7 @@ app.factory('ChatService', function() {
   var service = {};
  
   service.connect = function() {
-    if(service.ws) { return; }
+    if(this.ws) { return true; }
  
     var ws = new WebSocket(hostname("/entry"));
  
@@ -29,9 +29,16 @@ app.factory('ChatService', function() {
       service.callback(message.data);
     };
  
-    service.ws = ws;
+    this.ws = ws;
+
+    return (ws != null);
   }
  
+  service.isConnected = function() {
+    console.debug("isConnected: "+(service.ws != null ? "CONNECTED" : "NOT CONNECTED") )
+    return (service.ws != null);
+  }
+
   service.send = function(message) {
     service.ws.send(message);
   }
@@ -46,6 +53,7 @@ app.factory('ChatService', function() {
  
 function AppCtrl($scope, ChatService) {
   $scope.messages = [];
+  $scope.isConnected = false;
  
   ChatService.subscribe(function(message) {
     try{
@@ -58,11 +66,12 @@ function AppCtrl($scope, ChatService) {
   });
  
   $scope.connect = function() {
-    ChatService.connect();
+    $scope.isConnected = ChatService.connect();
   }
  
   $scope.send = function() {
-    ChatService.send('{"author": "abc", "body": "'+$scope.body+'"}');
-    $scope.body = "";
+    ChatService.send('{"author": "abc", "body": "' + this.body + '"}');
+    console.debug("sent : " + this.body)
+    this.body = "";
   }
 }
