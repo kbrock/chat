@@ -33,7 +33,8 @@ func main() {
 	server := chat.NewServer()
 	go server.Route()
 
-  log.Println("About to start the server on " + *addr)
+  log.Println("Build", Build)
+  log.Println("About to start the server on", *addr)
 	http.Handle("/entry", chat.NewClientHandler(server))
 	http.Handle("/", http.FileServer(http.Dir(*webroot)))
 	http.ListenAndServe(*addr, nil)

@@ -22,7 +22,7 @@ export GOPATH=$(pwd)
 # mkdir -p src/github.com/kbrock
 # ln -s ../../.. src/github.com/kbrock/chat
 go get github.com/kbrock/chat
-go install github.com/kbrock/chat
+go install -ldflags "-X main.Build 'v1'" github.com/kbrock/chat
 ```
 
 `open http://localhost:8080/`
