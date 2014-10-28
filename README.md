@@ -1,5 +1,10 @@
 Experimenting in Go, WebSockets, and Angular.js
 
+ABANDONED
+
+working on main portions of the go chat - you can find that at [multichat](http://github.com/kbrock/multichat)
+The angular code is not over there yet. That may come after a little while.
+
 ## Credit
 
 The server portion is based upon https://github.com/tenntenn/golang-samples/tree/master/websocket/websocket-chat
